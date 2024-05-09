@@ -1,2 +1,2 @@
 # StrukturyDanychProjekt3
-Trzeci projekt na struktury danych.
+Trzeci i ostani projekt na struktury danych.
