@@ -8,7 +8,7 @@ add_executable(StrukturyDanychProjekt3
         ui.cpp
         ui.h
         HashTable_cuckoo.h
-        HashTable_close_addresing.h
+        HashTable_chain_separate.h
         HashTable_open_addresing.h
         base.h
         array_list.h)
