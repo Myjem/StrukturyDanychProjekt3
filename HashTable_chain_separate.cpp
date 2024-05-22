@@ -24,6 +24,7 @@ void HashTable_chain::remove(int key) {
     for (int i = 0; i < HashTable[index].size(); i++) {
         if (HashTable[index][i].key == key) {
             HashTable[index].erase(i);
+            size--;
             return;
         }
     }
