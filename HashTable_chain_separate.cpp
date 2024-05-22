@@ -49,7 +49,7 @@ void HashTable_chain::print() {
     }
 }
 
-HashTable_chain::~HashTable_chain() {
+HashTable_chain::~HashTable_chain(){
     for (int i = 0; i < capacity; i++) {
         HashTable.get(i).~ArrayList();
     }
