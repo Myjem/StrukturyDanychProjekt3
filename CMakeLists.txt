@@ -11,4 +11,6 @@ add_executable(StrukturyDanychProjekt3
         HashTable_chain_separate.h
         HashTable_open_addresing.h
         base.h
-        array_list.h)
+        array_list.h
+        HashTable_chain_separate.cpp
+        couple.h)
