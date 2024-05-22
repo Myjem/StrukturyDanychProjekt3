@@ -1,3 +1,4 @@
+#include <iostream>
 #include "base.h"
 #include "array_list.h"
 #include "couple.h"
@@ -5,7 +6,7 @@
 
 using namespace std;
 
-HashTable_chain::HashTable_chain(int capacity) {
+HashTable_chain::HashTable_chain(int c):capacity(c),size(0) {
     HashTable = ArrayList<ArrayList<couple>>(capacity);
 }
 
@@ -15,15 +16,23 @@ int HashTable_chain::hash(int key) {
 
 void HashTable_chain::insert(int value, int key) {
     int index = hash(key);
-    HashTable[index].push_back(couple(key, value));
+    ArrayList<couple> &chain = HashTable.get(index);
+    for (int i = 0; i < chain.get_size(); i++) {
+        if (chain.get(i).key == key) {
+            chain.get(i).value = value;
+            return;
+        }
+    }
+    chain.push_back(couple(key, value));
     size++;
 }
 
 void HashTable_chain::remove(int key) {
     int index = hash(key);
-    for (int i = 0; i < HashTable[index].size(); i++) {
-        if (HashTable[index][i].key == key) {
-            HashTable[index].erase(i);
+    ArrayList<couple> &chain = HashTable.get(index);
+    for (int i = 0; i < chain.get_size(); i++) {
+        if (chain.get(i).key == key) {
+            chain.del(i);
             size--;
             return;
         }
@@ -31,18 +40,18 @@ void HashTable_chain::remove(int key) {
 }
 
 void HashTable_chain::print() {
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < capacity; i++) {
         cout << i << ": ";
-        for (int j = 0; j < HashTable[i].size(); j++) {
-            cout << HashTable[i][j].value << " ";
+        for (int j = 0; j < HashTable.get(i).get_size(); j++) {
+            cout << HashTable.get(i).get(j).value << " ";
         }
         cout << endl;
     }
 }
 
 HashTable_chain::~HashTable_chain() {
-    for (int i = 0; i < size; i++) {
-        HashTable[i].~ArrayList();
+    for (int i = 0; i < capacity; i++) {
+        HashTable.get(i).~ArrayList();
     }
     HashTable.~ArrayList();
 }
