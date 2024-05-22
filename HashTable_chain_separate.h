@@ -6,10 +6,11 @@
 class HashTable_chain:public Base{
 private:
     ArrayList<ArrayList<couple>> HashTable;
-    int size;
+    int capacity;
+    int size=0;
     int hash(int key);
 public:
-    HashTable_chain(int size);
+    HashTable_chain(int capacity);
     void insert(int value,int key);
     void remove(int key);
     void print();

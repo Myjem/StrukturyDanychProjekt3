@@ -5,17 +5,18 @@
 
 using namespace std;
 
-HashTable_chain::HashTable_chain(int size) {
-    HashTable = ArrayList<ArrayList<couple>>(size);
+HashTable_chain::HashTable_chain(int capacity) {
+    HashTable = ArrayList<ArrayList<couple>>(capacity);
 }
 
 int HashTable_chain::hash(int key) {
-    return key % size;
+    return key % capacity;
 }
 
 void HashTable_chain::insert(int value, int key) {
     int index = hash(key);
     HashTable[index].push_back(couple(key, value));
+    size++;
 }
 
 void HashTable_chain::remove(int key) {
