@@ -20,7 +20,7 @@ public:
     void del(int i);
     int search(T data);
     void resize();
-    T get(int i);
+    T& get(int i);
     int get_size();
     int get_capacity();
     void set(int i,T data);
@@ -93,7 +93,7 @@ template<typename T> int ArrayList<T>::search(T data) {
     }
 }
 
-template<typename T> T ArrayList<T>::get(int i){
+template<typename T> T& ArrayList<T>::get(int i){
     return tab[i];
 }
 
