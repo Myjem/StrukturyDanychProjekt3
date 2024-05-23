@@ -6,9 +6,7 @@
 
 using namespace std;
 
-HashTable_chain::HashTable_chain(int c):capacity(c),size(0) {
-    HashTable = ArrayList<ArrayList<couple>>(capacity);
-}
+HashTable_chain:: HashTable_chain(int c) : capacity(c), size(0), HashTable(ArrayList<ArrayList<couple>>(c)) {}
 
 int HashTable_chain::hash(int key) {
     return key % capacity;
@@ -49,9 +47,4 @@ void HashTable_chain::print() {
     }
 }
 
-HashTable_chain::~HashTable_chain() {
-    for (int i = 0; i < capacity; i++) {
-        HashTable.get(i).~ArrayList();
-    }
-    HashTable.~ArrayList();
-}
+HashTable_chain::~HashTable_chain() {}
