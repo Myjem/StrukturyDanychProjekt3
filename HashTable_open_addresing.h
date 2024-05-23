@@ -6,9 +6,11 @@
 class HashTable_open:public Base{
 private:
     ArrayList<couple> HashTable;
+    int capacity;
+    int size;
     int hash(int key);
 public:
-    HashTable_open(int s);
+    HashTable_open(int c);
     void insert(int value,int key);
     void remove(int key);
     void print();
