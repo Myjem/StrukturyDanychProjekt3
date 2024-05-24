@@ -5,7 +5,7 @@
 #include "couple.h"
 class HashTable_chain:public Base{
 private:
-    ArrayList<ArrayList<couple>> HashTable;
+    ArrayList<couple>* HashTab;
     int capacity;
     int size;
     int hash(int key);
