@@ -40,13 +40,6 @@ template<typename T> void ArrayList<T>::resize() {
         delete[] tab;
         tab=temp;
     }
-    if(size<floor(0.5*capacity)){//size down
-        capacity=floor(0.5*capacity);
-        T*temp=new T[capacity];
-        for(int i=0;i<size;i++) temp[i]=tab[i];//coping old tab to new tab
-        delete[] tab;
-        tab=temp;
-    }
 }
 
 template<typename T> void ArrayList<T>::append(int i, T data) {
