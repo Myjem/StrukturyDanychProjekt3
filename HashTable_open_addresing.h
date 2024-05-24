@@ -11,7 +11,7 @@ private:
     int hash(int key);
 public:
     HashTable_open(int c);
-    void insert(int value,int key);
+    void insert(int key,int value);
     void remove(int key);
     void print();
     ~HashTable_open();
