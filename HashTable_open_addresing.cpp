@@ -29,5 +29,10 @@ void HashTable_open::print() {
     }
 }
 
+int HashTable_open::get_size() {
+    return size;
+}
+
+
 HashTable_open::~HashTable_open() {
 }

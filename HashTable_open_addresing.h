@@ -14,6 +14,7 @@ public:
     void insert(int key,int value);
     void remove(int key);
     void print();
+    int get_size();
     ~HashTable_open();
 };
 #endif

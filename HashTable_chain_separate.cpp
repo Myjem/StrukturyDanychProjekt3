@@ -14,7 +14,7 @@ int HashTable_chain::hash(int key) {
     return key % capacity;
 }
 
-void HashTable_chain::insert(int value, int key) {
+void HashTable_chain::insert(int key, int value) {
     int index = hash(key);
     ArrayList<couple> &chain = HashTab[index];
     for(int i = 0; i < chain.get_size(); i++) {
@@ -43,10 +43,15 @@ void HashTable_chain::print() {
     for (int i = 0; i < capacity; i++) {
         cout << i << ": ";
         for (int j = 0; j < HashTab[i].get_size(); j++) {
-            cout << HashTab[i].get(j).value << " ";
+            cout<<"Klucz: "<<HashTab[i].get(j).key << " ";
+            cout <<"Wartosc: " <<HashTab[i].get(j).value << " ";
         }
         cout << endl;
     }
+}
+
+int HashTable_chain::get_size() {
+    return size;
 }
 
 HashTable_chain::~HashTable_chain() {

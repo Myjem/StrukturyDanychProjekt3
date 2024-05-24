@@ -5,6 +5,7 @@ public:
     virtual void insert(int value,int key)=0;
     virtual void remove(int key)=0;
     virtual void print()=0;
+    virtual int get_size()=0;
     virtual ~Base(){};
 };
 #endif

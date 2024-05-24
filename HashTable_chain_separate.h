@@ -11,9 +11,10 @@ private:
     int hash(int key);
 public:
     HashTable_chain(int c);
-    void insert(int value,int key);
+    void insert(int key,int value);
     void remove(int key);
     void print();
+    int get_size();
     ~HashTable_chain();
 };
 #endif
