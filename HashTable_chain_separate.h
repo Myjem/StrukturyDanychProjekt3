@@ -6,9 +6,9 @@
 class HashTable_chain:public Base{
 private:
     ArrayList<couple>* HashTab;
-    int capacity;
-    int size;
-    int hash(int key);
+    int capacity;//quantity of index (m)
+    int size;//qua tity of elements
+    int hash(int key);//hash function x mod m
 public:
     HashTable_chain(int c);
     void insert(int key,int value);

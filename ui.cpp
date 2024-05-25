@@ -24,21 +24,25 @@ void ui() {
         cout << "Wybor: ";
         cin >> mode;
         cout << endl;
-        cout << "Podaj pojemnosc slownika: ";
-        cin >> c;
         bool start = true;//for closing ui
         switch (mode) {//making structure
             case 1: {
+                cout << "Podaj ilosc indeksow: ";
+                cin >> c;
                 HashTable_open *t= new HashTable_open(c);
                 tab=t;
                 break;
             }
             case 2: {
+                cout << "Podaj ilosc indeksow: ";
+                cin >> c;
                 HashTable_chain *t = new HashTable_chain(c);
                 tab=t;
                 break;
             }
             case 3: {
+                cout << "Podaj ilosc indeksow: ";
+                cin >> c;
                 HashTable_cuckoo *t = new HashTable_cuckoo(c);
                 tab=t;
                 break;
@@ -158,7 +162,7 @@ void ui() {
                         int value = (rand() % max_v) + 1;
                         tab->insert(value*10,value) ;//generating random numbers
                     }
-                    cout << endl << "Wygenerowano wartosci z przedzialu <-" << 1<< "," << max_v << "> z kluczami o wartościach 10 razy wiekszych" << endl << endl;
+                    cout << endl << "Wygenerowano wartosci z przedzialu <" << 1<< "," << max_v << "> z kluczami o wartościach 10 razy wiekszych" << endl << endl;
                     break;
                 }
                 case 3: {

@@ -41,12 +41,12 @@ void HashTable_chain::remove(int key) {
 
 void HashTable_chain::print() {
     for (int i = 0; i < capacity; i++) {
-        cout << i << ": ";
         for (int j = 0; j < HashTab[i].get_size(); j++) {
             cout<<"Klucz: "<<HashTab[i].get(j).key << " ";
             cout <<"Wartosc: " <<HashTab[i].get(j).value << " ";
+            cout << endl;
         }
-        cout << endl;
+
     }
 }
 

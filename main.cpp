@@ -1,6 +1,8 @@
 #include<iostream>
 #include "HashTable_open_addresing.h"
 #include"array_list.h"
+#include "ui.h"
+#include "HashTable_chain_separate.h"
 using namespace std;
 
 int main()
@@ -10,5 +12,6 @@ int main()
     a.print();
     //ArrayList<couple> test(10);
     //cout << test.get_capacity();
-    //return 0;
+    ui();
+    return 0;
 }
