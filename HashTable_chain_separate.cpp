@@ -7,7 +7,7 @@
 using namespace std;
 
 HashTable_chain:: HashTable_chain(int c) : capacity(c), size(0){
-    HashTab = new ArrayList<couple>[capacity];
+    HashTab = new ArrayList<BST>[capacity];
 }
 
 int HashTable_chain::hash(int key) {
@@ -15,38 +15,31 @@ int HashTable_chain::hash(int key) {
 }
 
 void HashTable_chain::insert(int key, int value) {
-    int index = hash(key);
-    ArrayList<couple> &chain = HashTab[index];
-    for(int i = 0; i < chain.get_size(); i++) {
-        if (chain.get(i).key == key) {
-            chain.get(i).value = value;
-            return;
-        }
+    if(size == capacity)
+    {
+        cout<<"Slownik pelny!"<<endl;
+        return;
     }
-    chain.push_back(couple(key, value));
+    if(key<0)
+    {
+        cout<<"Klucz musi byc wiekszy od zero"<<endl;
+        return;
+    }
+    int index = hash(key);
+    HashTab->get(index).insert(key, value);
     size++;
 }
 
 void HashTable_chain::remove(int key) {
     int index = hash(key);
-    ArrayList<couple> &chain = HashTab[index];
-    for (int i = 0; i < chain.get_size(); i++) {
-        if (chain.get(i).key == key) {
-            chain.del(i);
-            size--;
-            return;
-        }
-    }
+    HashTab->get(index).remove(key);
+    size--;
 }
 
 void HashTable_chain::print() {
-    for (int i = 0; i < capacity; i++) {
-        for (int j = 0; j < HashTab[i].get_size(); j++) {
-            cout<<"Klucz: "<<HashTab[i].get(j).key << " ";
-            cout <<"Wartosc: " <<HashTab[i].get(j).value << " ";
-            cout << endl;
-        }
-
+    for (int i = 0; i < capacity; i++)
+    {
+        HashTab->get(i).print();
     }
 }
 

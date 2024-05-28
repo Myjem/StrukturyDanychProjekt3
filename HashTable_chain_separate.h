@@ -3,9 +3,10 @@
 #include "base.h"
 #include"array_list.h"
 #include "couple.h"
+#include "bst.h"
 class HashTable_chain:public Base{
 private:
-    ArrayList<couple>* HashTab;
+    ArrayList<BST>* HashTab;//array of bst(AVL) trees
     int capacity;//quantity of index (m)
     int size;//qua tity of elements
     int hash(int key);//hash function x mod m
