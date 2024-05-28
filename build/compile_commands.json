@@ -1,0 +1,32 @@
+[
+{
+  "directory": "D:/Repos/StrukturyDanychProjekt3/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -std=gnu++14 -o CMakeFiles\\StrukturyDanychProjekt3.dir\\main.cpp.obj -c D:\\Repos\\StrukturyDanychProjekt3\\main.cpp",
+  "file": "D:/Repos/StrukturyDanychProjekt3/main.cpp",
+  "output": "CMakeFiles/StrukturyDanychProjekt3.dir/main.cpp.obj"
+},
+{
+  "directory": "D:/Repos/StrukturyDanychProjekt3/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -std=gnu++14 -o CMakeFiles\\StrukturyDanychProjekt3.dir\\ui.cpp.obj -c D:\\Repos\\StrukturyDanychProjekt3\\ui.cpp",
+  "file": "D:/Repos/StrukturyDanychProjekt3/ui.cpp",
+  "output": "CMakeFiles/StrukturyDanychProjekt3.dir/ui.cpp.obj"
+},
+{
+  "directory": "D:/Repos/StrukturyDanychProjekt3/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -std=gnu++14 -o CMakeFiles\\StrukturyDanychProjekt3.dir\\HashTable_chain_separate.cpp.obj -c D:\\Repos\\StrukturyDanychProjekt3\\HashTable_chain_separate.cpp",
+  "file": "D:/Repos/StrukturyDanychProjekt3/HashTable_chain_separate.cpp",
+  "output": "CMakeFiles/StrukturyDanychProjekt3.dir/HashTable_chain_separate.cpp.obj"
+},
+{
+  "directory": "D:/Repos/StrukturyDanychProjekt3/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -std=gnu++14 -o CMakeFiles\\StrukturyDanychProjekt3.dir\\HashTable_open_addresing.cpp.obj -c D:\\Repos\\StrukturyDanychProjekt3\\HashTable_open_addresing.cpp",
+  "file": "D:/Repos/StrukturyDanychProjekt3/HashTable_open_addresing.cpp",
+  "output": "CMakeFiles/StrukturyDanychProjekt3.dir/HashTable_open_addresing.cpp.obj"
+},
+{
+  "directory": "D:/Repos/StrukturyDanychProjekt3/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -std=gnu++14 -o CMakeFiles\\StrukturyDanychProjekt3.dir\\HashTable_cuckoo.cpp.obj -c D:\\Repos\\StrukturyDanychProjekt3\\HashTable_cuckoo.cpp",
+  "file": "D:/Repos/StrukturyDanychProjekt3/HashTable_cuckoo.cpp",
+  "output": "CMakeFiles/StrukturyDanychProjekt3.dir/HashTable_cuckoo.cpp.obj"
+}
+]

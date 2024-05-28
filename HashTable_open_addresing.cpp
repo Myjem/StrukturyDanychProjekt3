@@ -6,26 +6,48 @@
 
 using namespace std;
 
-HashTable_open::HashTable_open(int c):capacity(c),size(0),HashTable(c*2) {}
+HashTable_open::HashTable_open(int c):capacity(c),size(0)
+{
+    HashTable = new couple*[capacity];
+    for(int i = 0; i < capacity; i++)
+    {
+        HashTable[i] == nullptr;
+    }
+}
 
 int HashTable_open::hash(int key) {
     return key % capacity;
 }
 
 void HashTable_open::insert(int key, int value) {
-    HashTable.append(hash(key),couple(key,value));
+    int index = hash(key);
+        int originalIndex = index;
+        while (HashTable[index] != nullptr) {
+            index = (index + 1) % capacity;
+            if (index == originalIndex) {
+                cout << "Hash table is full";
+                return;
+            }
+        }
+        HashTable[index] = new couple{key, value};
+        ++size;
 }
 
 void HashTable_open::remove(int key) {
 }
 
 void HashTable_open::print() {
-    cout << "Capacity: " << HashTable.get_capacity() << endl;
-    cout << "Size: " << HashTable.get_size() << endl;
-    for(int i = 0; i < HashTable.get_capacity(); i++)
+    for (int i = 0; i < capacity; i++)
     {
-        cout << "Klucz: " << HashTable.get(i).key << " ";
-        cout << "Value: " << HashTable.get(i).value << endl;
+        if(HashTable[i] != nullptr)
+        {
+            cout << "Index: " << i << " Key: " << HashTable[i]->key << " Value: " << HashTable[i]->value << endl;
+        }
+        else
+        {
+            cout << "Index: " << i << " is empty" << endl;
+        }
+        
     }
 }
 

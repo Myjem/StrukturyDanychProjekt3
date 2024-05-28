@@ -5,10 +5,10 @@
 #include "couple.h"
 class HashTable_open:public Base{
 private:
-    ArrayList<couple> HashTable;
     int capacity;
     int size;
     int hash(int key);
+    couple** HashTable;
 public:
     HashTable_open(int c);
     void insert(int key,int value);

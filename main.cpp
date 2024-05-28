@@ -8,10 +8,10 @@ using namespace std;
 int main()
 {
     HashTable_open a(10);
-    a.insert(10,5);
+    a.insert(5,10);
+    a.insert(6,6);
+    a.insert(5,3);
     a.print();
-    //ArrayList<couple> test(10);
-    //cout << test.get_capacity();
-    ui();
+    //ui();
     return 0;
 }
