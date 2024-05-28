@@ -24,10 +24,10 @@ int BST::get_balance(bst_node *n) {
 
 bst_node *BST::rotate_right(bst_node *n) {
     bst_node* x = n->left;
-    bst_node* T2 = x->right;
+    bst_node* y = x->right;
 
     x->right = n;
-    n->left = T2;
+    n->left = y;
 
     n->h = max(get_h(n->left), get_h(n->right)) + 1;
     x->h = max(get_h(x->left), get_h(x->right)) + 1;
