@@ -1,3 +1,0 @@
-D:/Repos/StrukturyDanychProjekt3/build/CMakeFiles/StrukturyDanychProjekt3.dir
-D:/Repos/StrukturyDanychProjekt3/build/CMakeFiles/edit_cache.dir
-D:/Repos/StrukturyDanychProjekt3/build/CMakeFiles/rebuild_cache.dir
