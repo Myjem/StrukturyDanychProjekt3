@@ -27,23 +27,23 @@ void ui() {
         bool start = true;//for closing ui
         switch (mode) {//making structure
             case 1: {
-                cout << "Podaj ilosc indeksow: ";
+                cout << "Podaj przewidywana ilosc par klucz-wartosc: ";
                 cin >> c;
-                HashTable_open *t= new HashTable_open(c);
+                HashTable_open *t= new HashTable_open(2*c);
                 tab=t;
                 break;
             }
-            case 2: {
-                cout << "Podaj ilosc indeksow: ";
+            case 2:{
+                cout << "Podaj przewidywana ilosc par klucz-wartosc: ";
                 cin >> c;
-                HashTable_chain *t = new HashTable_chain(c);
+                HashTable_chain *t = new HashTable_chain(2*c);
                 tab=t;
                 break;
             }
             case 3: {
-                cout << "Podaj ilosc indeksow: ";
+                cout << "Podaj przewidywana ilosc par klucz-wartosc: ";
                 cin >> c;
-                HashTable_cuckoo *t = new HashTable_cuckoo(c);
+                HashTable_cuckoo *t = new HashTable_cuckoo(2*c);
                 tab=t;
                 break;
             }
@@ -98,20 +98,20 @@ void ui() {
                         switch (mode) {
                             case 1: {
                                 delete tab;
-                                HashTable_open *temp = new HashTable_open(c);
+                                HashTable_open *temp = new HashTable_open(2*c);
                                 tab = temp;
                                 break;
 
                             }
                             case 2: {
                                 delete tab;
-                                HashTable_chain *temp = new HashTable_chain(c);
+                                HashTable_chain *temp = new HashTable_chain(2*c);
                                 tab = temp;
                                 break;
                             }
                             case 3: {
                                 delete tab;
-                                HashTable_cuckoo *temp = new HashTable_cuckoo(c);
+                                HashTable_cuckoo *temp = new HashTable_cuckoo(2*c);
                                 tab = temp;
                                 break;
                             }
@@ -136,20 +136,20 @@ void ui() {
                         switch (mode) {//deleting old stucture
                             case 1: {
                                 delete tab;
-                                HashTable_open *temp = new HashTable_open(c);
+                                HashTable_open *temp = new HashTable_open(2*c);
                                 tab = temp;
                                 break;
 
                             }
                             case 2: {
                                 delete tab;
-                                HashTable_chain *temp = new HashTable_chain(c);
+                                HashTable_chain *temp = new HashTable_chain(2*c);
                                 tab = temp;
                                 break;
                             }
                             case 3: {
                                 delete tab;
-                                HashTable_cuckoo *temp = new HashTable_cuckoo(c);
+                                HashTable_cuckoo *temp = new HashTable_cuckoo(2*c);
                                 tab = temp;
                                 break;
                             }
@@ -160,9 +160,9 @@ void ui() {
                     cin >> max_v;
                     for (int i = 0; c > i; i++) {
                         int value = (rand() % max_v) + 1;
-                        tab->insert(value*10,value) ;//generating random numbers
+                        tab->insert(value*10,i+1) ;//generating random numbers
                     }
-                    cout << endl << "Wygenerowano wartosci z przedzialu <" << 1<< "," << max_v << "> z kluczami o wartościach 10 razy wiekszych" << endl << endl;
+                    cout << endl << "Wygenerowano "<<c<<" par o wartosciach z przedzialu <" << 1<< "," << max_v << "> z kluczami z przedzialu <1,"<<c <<">"<< endl << endl;
                     break;
                 }
                 case 3: {

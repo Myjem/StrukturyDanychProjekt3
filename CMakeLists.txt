@@ -15,4 +15,7 @@ add_executable(StrukturyDanychProjekt3
         HashTable_chain_separate.cpp
         HashTable_open_addresing.cpp
         couple.h
-        HashTable_cuckoo.cpp)
+        HashTable_cuckoo.cpp
+        bst_node.h
+        bst.h
+        bst.cpp)
