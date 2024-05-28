@@ -38,6 +38,18 @@ void HashTable_open::insert(int key, int value) {
 }
 
 void HashTable_open::remove(int key) {
+    int index = hash(key);
+    int originalIndex = index;
+    while(HashTable[index] != nullptr)
+    {
+        if(HashTable[index]->key == key)
+        {
+            delete HashTable[index];
+            HashTable[index] = nullptr;
+            --size;
+        }
+        index = (index + 1) % capacity;
+    }
 }
 
 void HashTable_open::print() {

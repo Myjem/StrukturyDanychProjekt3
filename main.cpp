@@ -8,9 +8,9 @@ int main()
 {
     HashTable_open a(3);
     a.insert(0,10);
-    a.insert(4,20);
-    a.insert(3,30);
-    cout << a.get_capacity() << endl;
+    a.insert(1,20);
+    a.insert(1,30);
+    //a.remove(5);
     a.print();
     //ui();
     return 0;
