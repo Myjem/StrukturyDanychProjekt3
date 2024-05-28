@@ -11,7 +11,7 @@ HashTable_open::HashTable_open(int c):capacity(c),size(0)
     HashTable = new couple*[capacity];
     for(int i = 0; i < capacity; i++)
     {
-        HashTable[i] == nullptr;
+        HashTable[i] = nullptr;
     }
 }
 
@@ -20,6 +20,10 @@ int HashTable_open::hash(int key) {
 }
 
 void HashTable_open::insert(int key, int value) {
+    if(size >= capacity)
+    {
+        cout << "HashTable is full";
+    }
     int index = hash(key);
         int originalIndex = index;
         while (HashTable[index] != nullptr) {
@@ -53,6 +57,10 @@ void HashTable_open::print() {
 
 int HashTable_open::get_size() {
     return size;
+}
+
+int HashTable_open::get_capacity(){
+    return capacity;
 }
 
 
