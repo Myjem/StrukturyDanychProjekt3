@@ -20,34 +20,45 @@ int HashTable_open::hash(int key) {
 }
 
 void HashTable_open::insert(int key, int value) {
-    if(size >= capacity)
-    {
-        cout << "HashTable is full";
+    if (size >= capacity) {
+        cout << "HashTable is full" << endl;
+        return;
     }
     int index = hash(key);
-        int originalIndex = index;
-        while (HashTable[index] != nullptr) {
-            index = (index + 1) % capacity;
-            if (index == originalIndex) {
-                cout << "Hash table is full";
-                return;
-            }
+    int originalIndex = index;
+
+    while (HashTable[index] != nullptr) {
+        if (HashTable[index]->key == key) {
+            HashTable[index]->value = value;
+            return;
         }
-        HashTable[index] = new couple{key, value};
-        size++;
+        index = (index + 1) % capacity;
+        if (index == originalIndex) {
+            cout << "Hash table is full" << endl;
+            return;
+        }
+    }
+    HashTable[index] = new couple{key, value};
+    ++size;
 }
 
 void HashTable_open::remove(int key) {
     int index = hash(key);
     int originalIndex = index;
-    while(HashTable[index] != nullptr)
-    {
-        if(HashTable[index]->key == key)
-        {
-            delete HashTable[index];
-            HashTable[index] = nullptr;
-            size--;
+
+    while (true) {
+        if (HashTable[index] != nullptr) {
+            if (HashTable[index]->key == key) {
+                delete HashTable[index];
+                HashTable[index] = nullptr;
+                --size;
+                return;
+            }
+        } else if (index == originalIndex) {
+            cout << "Key not found";
+            return;
         }
+
         index = (index + 1) % capacity;
     }
 }
@@ -73,4 +84,10 @@ int HashTable_open::get_capacity(){
 
 
 HashTable_open::~HashTable_open() {
+    for (int i = 0; i < capacity; i++) {
+        if (HashTable[i] != nullptr) {
+            delete HashTable[i];
+        }
+    }
+    delete[] HashTable;
 }
