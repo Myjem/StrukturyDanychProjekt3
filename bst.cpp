@@ -49,42 +49,45 @@ bst_node *BST::rotate_left(bst_node *n) {
 }
 
 bst_node *BST::insert(bst_node *n, couple &new_node) {
-    if(n == nullptr)
-    {
+    if (n == nullptr) {
         size++;
         return new bst_node(new_node.key ,new_node.value);
     }
-    if(new_node.key < n->data.key)
-        n->left = insert(n->left,new_node);
-    else if(new_node.key > n->data.key)
-        n->right = insert(n->right,new_node);
+
+    if (new_node.key < n->data.key)
+        n->left = insert(n->left, new_node);
+    else if (new_node.key > n->data.key)
+        n->right = insert(n->right, new_node);
     else
+    {
+        n->data.value = new_node.value;
         return n;
+    }
+
 
     n->h = 1 + max(get_h(n->left), get_h(n->right));
 
     int balance = get_balance(n);
 
-    if(balance > 1 && new_node.key < n->left->data.key)
+    if (balance > 1 && new_node.key < n->left->data.key)
         return rotate_right(n);
 
-    if(balance < -1 && new_node.key > n->right->data.key)
+    if (balance < -1 && new_node.key > n->right->data.key)
         return rotate_left(n);
 
-    if(balance > 1 && new_node.key > n->left->data.key)
-    {
+    if (balance > 1 && new_node.key > n->left->data.key) {
         n->left = rotate_left(n->left);
         return rotate_right(n);
     }
 
-    if(balance < -1 && new_node.key < n->right->data.key)
-    {
+    if (balance < -1 && new_node.key < n->right->data.key) {
         n->right = rotate_right(n->right);
         return rotate_left(n);
     }
 
     return n;
 }
+
 
 bst_node *BST::balance(bst_node *n) {
     int balance = get_balance(n);

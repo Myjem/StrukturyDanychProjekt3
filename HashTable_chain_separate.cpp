@@ -8,6 +8,10 @@ using namespace std;
 
 HashTable_chain:: HashTable_chain(int c) : capacity(c), size(0){
     HashTab = new ArrayList<BST>[capacity];
+    for(int i = 0; i < capacity; i++)
+    {
+        HashTab->push_back(BST());
+    }
 }
 
 int HashTable_chain::hash(int key) {

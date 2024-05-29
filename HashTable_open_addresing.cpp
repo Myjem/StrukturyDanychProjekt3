@@ -20,45 +20,34 @@ int HashTable_open::hash(int key) {
 }
 
 void HashTable_open::insert(int key, int value) {
-    if (size >= capacity) {
-        cout << "HashTable is full" << endl;
-        return;
+    if(size >= capacity)
+    {
+        cout << "HashTable is full";
     }
     int index = hash(key);
-    int originalIndex = index;
-
-    while (HashTable[index] != nullptr) {
-        if (HashTable[index]->key == key) {
-            HashTable[index]->value = value;
-            return;
+        int originalIndex = index;
+        while (HashTable[index] != nullptr) {
+            index = (index + 1) % capacity;
+            if (index == originalIndex) {
+                cout << "Hash table is full";
+                return;
+            }
         }
-        index = (index + 1) % capacity;
-        if (index == originalIndex) {
-            cout << "Hash table is full" << endl;
-            return;
-        }
-    }
-    HashTable[index] = new couple{key, value};
-    ++size;
+        HashTable[index] = new couple{key, value};
+        size++;
 }
 
 void HashTable_open::remove(int key) {
     int index = hash(key);
     int originalIndex = index;
-
-    while (true) {
-        if (HashTable[index] != nullptr) {
-            if (HashTable[index]->key == key) {
-                delete HashTable[index];
-                HashTable[index] = nullptr;
-                --size;
-                return;
-            }
-        } else if (index == originalIndex) {
-            cout << "Key not found";
-            return;
+    while(HashTable[index] != nullptr)
+    {
+        if(HashTable[index]->key == key)
+        {
+            delete HashTable[index];
+            HashTable[index] = nullptr;
+            size--;
         }
-
         index = (index + 1) % capacity;
     }
 }
@@ -68,13 +57,9 @@ void HashTable_open::print() {
     {
         if(HashTable[i] != nullptr)
         {
-            cout << "Index: " << i << " Key: " << HashTable[i]->key << " Value: " << HashTable[i]->value << endl;
+            cout << " Key: " << HashTable[i]->key << " Value: " << HashTable[i]->value << endl;
         }
-        else
-        {
-            cout << "Index: " << i << " is empty" << endl;
-        }
-        
+        else continue;
     }
 }
 
@@ -88,10 +73,4 @@ int HashTable_open::get_capacity(){
 
 
 HashTable_open::~HashTable_open() {
-    for (int i = 0; i < capacity; i++) {
-        if (HashTable[i] != nullptr) {
-            delete HashTable[i];
-        }
-    }
-    delete[] HashTable;
 }

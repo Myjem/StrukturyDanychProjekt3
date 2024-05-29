@@ -160,7 +160,7 @@ void ui() {
                     cin >> max_v;
                     for (int i = 0; c > i; i++) {
                         int value = (rand() % max_v) + 1;
-                        tab->insert(value*10,i+1) ;//generating random numbers
+                        tab->insert(i+1,value) ;//generating random numbers
                     }
                     cout << endl << "Wygenerowano "<<c<<" par o wartosciach z przedzialu <" << 1<< "," << max_v << "> z kluczami z przedzialu <1,"<<c <<">"<< endl << endl;
                     break;
