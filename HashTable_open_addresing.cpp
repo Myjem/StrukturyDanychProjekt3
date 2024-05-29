@@ -40,15 +40,28 @@ void HashTable_open::insert(int key, int value) {
 void HashTable_open::remove(int key) {
     int index = hash(key);
     int originalIndex = index;
-    while(HashTable[index] != nullptr)
-    {
-        if(HashTable[index]->key == key)
-        {
-            delete HashTable[index];
-            HashTable[index] = nullptr;
-            --size;
+    bool found = false;
+
+    while (true) {
+        if (HashTable[index] != nullptr) {
+            if (HashTable[index]->key == key) {
+                delete HashTable[index];
+                HashTable[index] = nullptr;
+                --size;
+                found = true;
+            }
+        } else if (!found && index == originalIndex) {
+            break;
         }
+
         index = (index + 1) % capacity;
+        if (index == originalIndex) {
+            break;
+        }
+    }
+
+    if (!found) {
+        cout << "Key not found" << endl;
     }
 }
 
@@ -77,4 +90,10 @@ int HashTable_open::get_capacity(){
 
 
 HashTable_open::~HashTable_open() {
+    for (int i = 0; i < capacity; i++) {
+        if (HashTable[i] != nullptr) {
+            delete HashTable[i];
+        }
+    }
+    delete[] HashTable;
 }
