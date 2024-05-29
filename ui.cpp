@@ -181,7 +181,7 @@ void ui() {
                 }
 
                 case 4: {
-                    cout << "Podaj klucz do usuneicia pary: ";
+                    cout << "Podaj klucz do usuniecia pary: ";
                     cin >> number;
                     if (number < 0) {
                         cout << endl << "Klucz musi byc dodatni!" << endl << endl;
