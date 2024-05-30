@@ -12,7 +12,7 @@
 #include "array_list.h"
 using namespace std;
 
-void load_data(HashTable_open *hashTable, int amount_of_data)
+void load_data(HashTable_cuckoo *hashTable, int amount_of_data)
 {
     fstream file;
     string k="";
@@ -47,12 +47,12 @@ void load_keys(ArrayList<int>&Keys,int amount_of_data)
 int main()
 {
 
-    int q = 50;
-    int amount_of_data = 10000;//quantity of data
+   /* int q = 50;
+    int amount_of_data = 5000;//quantity of data (5000,8000,10000,16000,20000,40000,60000,100000)
     ArrayList<int>Keys(amount_of_data);
-    HashTable_open* hashTables[q];
+    HashTable_cuckoo* hashTables[q];
      for (int i = 0; i < q; i++) {
-        hashTables[i] = new HashTable_open(3*amount_of_data);
+        hashTables[i] = new HashTable_cuckoo(3*amount_of_data);
         load_data(hashTables[i],amount_of_data);
     }
     cout << endl << "Wczytano" << endl << endl;
@@ -72,8 +72,8 @@ int main()
     }
     end = std::chrono::high_resolution_clock::now();
     time = std::chrono::duration_cast<std::chrono::nanoseconds >(end - begin);
-    cout<<"Czas usuniecia: "<<time.count()/q<<" ns"<<endl;
-    //ui();
+    cout<<"Czas usuniecia: "<<time.count()/q<<" ns"<<endl;*/
+    ui();
     return 0;
     
 }
