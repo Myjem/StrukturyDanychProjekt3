@@ -31,12 +31,10 @@ void load_data(HashTable_open *hashTable, int amount_of_data)
 void load_keys(ArrayList<int>&Keys){
     fstream file;
     string k="";
-    string v="";
     file.open("keys_value.txt", ios::in);
     for (int i = 0; i < Keys.get_size(); i++)
     {
         getline(file, k, ' ');
-        getline(file, v);
         Keys.push_back(stoi(k));
     }
     file.close();
