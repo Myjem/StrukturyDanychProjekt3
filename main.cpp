@@ -12,7 +12,7 @@
 #include "array_list.h"
 using namespace std;
 
-void load_data(HashTable_open *hashTable, int amount_of_data,ArrayList<int>&Keys)
+void load_data(HashTable_open *hashTable, int amount_of_data)
 {
     fstream file;
     string k="";
@@ -23,14 +23,25 @@ void load_data(HashTable_open *hashTable, int amount_of_data,ArrayList<int>&Keys
         getline(file, k, ' ');
         getline(file, v);
         hashTable->insert(stoi(k), stoi(v));
-        Keys.push_back(stoi(k));
     }
     file.close();
     cout << endl << "Wczytano" << endl << endl;
 }
 
-
-
+void load_keys(ArrayList<int>&Keys){
+    fstream file;
+    string k="";
+    string v="";
+    file.open("keys.txt", ios::in);
+    for (int i = 0; i < Keys.get_size(); i++)
+    {
+        getline(file, k, ' ');
+        getline(file, v);
+        Keys.push_back(stoi(k));
+    }
+    file.close();
+    cout << endl << "Wczytano" << endl << endl;
+}
 
 int main()
 {
@@ -41,9 +52,9 @@ int main()
     HashTable_open* hashTables[q];
      for (int i = 0; i < q; i++) {
         hashTables[i] = new HashTable_open(amount_of_data);
-        load_data(hashTables[i],amount_of_data,Keys);
+        load_data(hashTables[i],amount_of_data);
     }
-
+    load_keys(Keys);
 
     auto begin = std::chrono::high_resolution_clock::now();
     for(int i=0;q>i;i++) hashTables[i]->insert();
