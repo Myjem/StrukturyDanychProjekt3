@@ -32,7 +32,7 @@ void load_keys(ArrayList<int>&Keys){
     fstream file;
     string k="";
     string v="";
-    file.open("keys.txt", ios::in);
+    file.open("keys_value.txt", ios::in);
     for (int i = 0; i < Keys.get_size(); i++)
     {
         getline(file, k, ' ');
