@@ -29,21 +29,21 @@ void ui() {
             case 1: {
                 cout << "Podaj przewidywana ilosc par klucz-wartosc: ";
                 cin >> c;
-                HashTable_open *t= new HashTable_open(2*c);
+                HashTable_open *t= new HashTable_open(3*c);
                 tab=t;
                 break;
             }
             case 2:{
                 cout << "Podaj przewidywana ilosc par klucz-wartosc: ";
                 cin >> c;
-                HashTable_chain *t = new HashTable_chain(2*c);
+                HashTable_chain *t = new HashTable_chain(3*c);
                 tab=t;
                 break;
             }
             case 3: {
                 cout << "Podaj przewidywana ilosc par klucz-wartosc: ";
                 cin >> c;
-                HashTable_cuckoo *t = new HashTable_cuckoo(2*c);
+                HashTable_cuckoo *t = new HashTable_cuckoo(3*c);
                 tab=t;
                 break;
             }
@@ -98,20 +98,20 @@ void ui() {
                         switch (mode) {
                             case 1: {
                                 delete tab;
-                                HashTable_open *temp = new HashTable_open(2*c);
+                                HashTable_open *temp = new HashTable_open(3*c);
                                 tab = temp;
                                 break;
 
                             }
                             case 2: {
                                 delete tab;
-                                HashTable_chain *temp = new HashTable_chain(2*c);
+                                HashTable_chain *temp = new HashTable_chain(3*c);
                                 tab = temp;
                                 break;
                             }
                             case 3: {
                                 delete tab;
-                                HashTable_cuckoo *temp = new HashTable_cuckoo(2*c);
+                                HashTable_cuckoo *temp = new HashTable_cuckoo(3*c);
                                 tab = temp;
                                 break;
                             }
@@ -136,20 +136,20 @@ void ui() {
                         switch (mode) {//deleting old stucture
                             case 1: {
                                 delete tab;
-                                HashTable_open *temp = new HashTable_open(2*c);
+                                HashTable_open *temp = new HashTable_open(3*c);
                                 tab = temp;
                                 break;
 
                             }
                             case 2: {
                                 delete tab;
-                                HashTable_chain *temp = new HashTable_chain(2*c);
+                                HashTable_chain *temp = new HashTable_chain(3*c);
                                 tab = temp;
                                 break;
                             }
                             case 3: {
                                 delete tab;
-                                HashTable_cuckoo *temp = new HashTable_cuckoo(2*c);
+                                HashTable_cuckoo *temp = new HashTable_cuckoo(3*c);
                                 tab = temp;
                                 break;
                             }

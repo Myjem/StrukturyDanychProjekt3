@@ -48,11 +48,11 @@ int main()
 {
 
     int q = 50;
-    int amount_of_data = 100000;//quantity of data
+    int amount_of_data = 10000;//quantity of data
     ArrayList<int>Keys(amount_of_data);
     HashTable_open* hashTables[q];
      for (int i = 0; i < q; i++) {
-        hashTables[i] = new HashTable_open(2*amount_of_data);
+        hashTables[i] = new HashTable_open(3*amount_of_data);
         load_data(hashTables[i],amount_of_data);
     }
     cout << endl << "Wczytano" << endl << endl;
