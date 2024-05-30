@@ -39,7 +39,7 @@ void HashTable_open::insert(int key, int value) {
         }
     }
     HashTable[index] = new couple{key, value};
-    ++size;
+    size++;
 }
 
 void HashTable_open::remove(int key) {
@@ -47,7 +47,7 @@ void HashTable_open::remove(int key) {
     int originalIndex = index;
 
     while (true) {
-        if (HashTable[index] != nullptr) {
+         if (HashTable[index] != nullptr) {
             if (HashTable[index]->key == key) {
                 delete HashTable[index];
                 HashTable[index] = nullptr;

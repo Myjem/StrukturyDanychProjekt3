@@ -18,41 +18,45 @@ void load_data(HashTable_open *hashTable, int amount_of_data)
     string k="";
     string v="";
     file.open("key_value.txt", ios::in);
-    for (int i = 0; i < amount_of_data; i++) 
+    while(hashTable->get_size()<amount_of_data)
     {
         getline(file, k, ' ');
         getline(file, v);
         hashTable->insert(stoi(k), stoi(v));
     }
+
     file.close();
-    cout << endl << "Wczytano" << endl << endl;
 }
 
-void load_keys(ArrayList<int>&Keys){
+void load_keys(ArrayList<int>&Keys,int amount_of_data)
+{
     fstream file;
     string k="";
-    file.open("keys_value.txt", ios::in);
-    for (int i = 0; i < Keys.get_size(); i++)
+    string v="";
+    file.open("keys.txt", ios::in);
+    for (int i = 0; i < amount_of_data; i++)
     {
         getline(file, k, ' ');
+        getline(file, v);
         Keys.push_back(stoi(k));
     }
     file.close();
-    cout << endl << "Wczytano klucze" << endl << endl;
+    cout<< endl << "Wczytano klucze" << endl << endl;
 }
 
 int main()
 {
 
     int q = 50;
-    int amount_of_data = 3;//quantity of data
+    int amount_of_data = 100000;//quantity of data
     ArrayList<int>Keys(amount_of_data);
     HashTable_open* hashTables[q];
      for (int i = 0; i < q; i++) {
-        hashTables[i] = new HashTable_open(amount_of_data);
+        hashTables[i] = new HashTable_open(2*amount_of_data);
         load_data(hashTables[i],amount_of_data);
     }
-    load_keys(Keys);
+    cout << endl << "Wczytano" << endl << endl;
+    load_keys(Keys,amount_of_data);
 
     auto begin = std::chrono::high_resolution_clock::now();
     for(int i=0;q>i;i++) hashTables[i]->insert((rand()%500000)+1,(rand()%5000)+1);
@@ -62,10 +66,13 @@ int main()
 
     //extract
     begin = std::chrono::high_resolution_clock::now();
-    for(int i=0;q>i;i++) hashTables[i]->remove(Keys.get(rand()%Keys.get_size()));
+    for(int i=0;q>i;i++) {
+        int key=Keys.get(rand()%Keys.get_size());
+        hashTables[i]->remove(key);
+    }
     end = std::chrono::high_resolution_clock::now();
     time = std::chrono::duration_cast<std::chrono::nanoseconds >(end - begin);
-    cout<<"Czas wyjecia najwiekszego priorytetu: "<<time.count()/q<<" ns"<<endl;
+    cout<<"Czas usuniecia: "<<time.count()/q<<" ns"<<endl;
     //ui();
     return 0;
     
