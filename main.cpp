@@ -12,7 +12,7 @@
 #include "array_list.h"
 using namespace std;
 
-void load_data(HashTable_open *hashTable, int amount_of_data)
+void load_data(HashTable_open *hashTable, int amount_of_data,ArrayList<int>&Keys)
 {
     fstream file;
     string k="";
@@ -23,10 +23,10 @@ void load_data(HashTable_open *hashTable, int amount_of_data)
         getline(file, k, ' ');
         getline(file, v);
         hashTable->insert(stoi(k), stoi(v));
+        Keys.push_back(stoi(k));
     }
     file.close();
     cout << endl << "Wczytano" << endl << endl;
-    //ui();
 }
 
 
@@ -36,11 +36,12 @@ int main()
 {
 
     int q = 50;
-    int amount_of_data = 3;
+    int amount_of_data = 3;//quantity of data
+    ArrayList<int>Keys(amount_of_data);
     HashTable_open* hashTables[q];
      for (int i = 0; i < q; i++) {
         hashTables[i] = new HashTable_open(amount_of_data);
-        load_data(hashTables[i],amount_of_data);
+        load_data(hashTables[i],amount_of_data,Keys);
     }
 
 
