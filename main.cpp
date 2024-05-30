@@ -40,7 +40,7 @@ void load_keys(ArrayList<int>&Keys){
         Keys.push_back(stoi(k));
     }
     file.close();
-    cout << endl << "Wczytano" << endl << endl;
+    cout << endl << "Wczytano klucze" << endl << endl;
 }
 
 int main()
