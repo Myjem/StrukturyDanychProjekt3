@@ -55,14 +55,14 @@ int main()
     load_keys(Keys);
 
     auto begin = std::chrono::high_resolution_clock::now();
-    for(int i=0;q>i;i++) hashTables[i]->insert();
+    for(int i=0;q>i;i++) hashTables[i]->insert((rand()%500000)+1,(rand()%5000)+1);
     auto end = std::chrono::high_resolution_clock::now();
     auto time = std::chrono::duration_cast<std::chrono::nanoseconds >(end - begin);
      cout<<"Czas dodania: "<<time.count()/q<<" ns"<<endl;
 
     //extract
     begin = std::chrono::high_resolution_clock::now();
-    for(int i=0;q>i;i++) hashTables[i]->remove();               
+    for(int i=0;q>i;i++) hashTables[i]->remove(Keys.get(rand()%Keys.get_size()));
     end = std::chrono::high_resolution_clock::now();
     time = std::chrono::duration_cast<std::chrono::nanoseconds >(end - begin);
     cout<<"Czas wyjecia najwiekszego priorytetu: "<<time.count()/q<<" ns"<<endl;
