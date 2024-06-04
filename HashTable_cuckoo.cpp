@@ -14,27 +14,27 @@ HashTable_cuckoo::HashTable_cuckoo(int c) {
 }
 
 int HashTable_cuckoo::hash1(int key) {
-    return key % capacity;
+    return key % capacity;//hash function x mod m
 }
 
 int HashTable_cuckoo::hash2(int key) {
-    return (key / capacity) % capacity;
+    return (key / capacity) % capacity;//hash function (x div m) mod m
 }
 
 void HashTable_cuckoo::rehash() {
-    couple** oldTable1 = HashTable1;
+    couple** oldTable1 = HashTable1;//save old tables
     couple** oldTable2 = HashTable2;
     int oldCapacity = capacity;
 
-    capacity *= 2;
+    capacity *= 2;//double the capacity
     size = 0;
-    HashTable1 = new couple*[capacity];
+    HashTable1 = new couple*[capacity];//create new tables
     HashTable2 = new couple*[capacity];
     for(int i = 0; i < capacity; i++) {
         HashTable1[i] = nullptr;
         HashTable2[i] = nullptr;
     }
-
+    //reinsert all elements
     for(int i = 0; i < oldCapacity; i++) {
         if(oldTable1[i] != nullptr) {
             insert(oldTable1[i]->key, oldTable1[i]->value);
@@ -46,7 +46,7 @@ void HashTable_cuckoo::rehash() {
         }
     }
 
-    delete[] oldTable1;
+    delete[] oldTable1;//delete old tables
     delete[] oldTable2;
 }
 
@@ -54,7 +54,7 @@ void HashTable_cuckoo::insert(int key, int value) {
     int count = 0;
     couple* temp = new couple(key, value);
 
-    while (count < capacity) {
+    while (count < capacity) {//max number of iterations
         int index1 = hash1(temp->key);
         if (HashTable1[index1] == nullptr) {
             HashTable1[index1] = temp;
@@ -92,7 +92,7 @@ void HashTable_cuckoo::insert(int key, int value) {
     }
 
     delete temp;
-    rehash();
+    rehash();//rehash if we have max number of iterations without inserting
     insert(key, value);
 }
 

@@ -10,9 +10,9 @@ private:
     int get_balance(bst_node* n);//get balance of node
     bst_node* rotate_right(bst_node* n);
     bst_node* rotate_left(bst_node* n);
-    bst_node* insert(bst_node* n,couple& new_node);
+    bst_node* insert(bst_node* n,couple& new_node);//private insert
     bst_node* balance(bst_node* n);//balance node
-    bst_node* remove(bst_node* n,int key);
+    bst_node* remove(bst_node* n,int key);//private remove
     bst_node* search(bst_node* n,int key);
     void print(bst_node* n);
 

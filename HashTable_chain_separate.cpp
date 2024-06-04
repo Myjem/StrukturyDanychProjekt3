@@ -15,7 +15,7 @@ HashTable_chain:: HashTable_chain(int c) : capacity(c), size(0){
 }
 
 int HashTable_chain::hash(int key) {
-    return key % capacity;
+    return key % capacity;//hash function x mod m
 }
 
 void HashTable_chain::insert(int key, int value) {

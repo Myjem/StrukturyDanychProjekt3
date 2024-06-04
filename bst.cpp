@@ -6,30 +6,30 @@
 using namespace std;
 
 BST::BST() {
-    root = nullptr;
+    root = nullptr;//root of the tree
     size = 0;
 }
 
-int BST::get_h(bst_node *n) {
+int BST::get_h(bst_node *n) {//get height of the node
     if(n == nullptr)
         return 0;
     return n->h;
 }
 
-int BST::get_balance(bst_node *n) {
+int BST::get_balance(bst_node *n) {//get balance of the node
     if(n == nullptr)
         return 0;
-    return get_h(n->left) - get_h(n->right);
+    return get_h(n->left) - get_h(n->right);//left height - right height
 }
 
 bst_node *BST::rotate_right(bst_node *n) {
-    bst_node* x = n->left;
-    bst_node* y = x->right;
+    bst_node* x = n->left;//left child of n
+    bst_node* y = x->right;//right child of x
 
     x->right = n;
     n->left = y;
 
-    n->h = max(get_h(n->left), get_h(n->right)) + 1;
+    n->h = max(get_h(n->left), get_h(n->right)) + 1;//update height
     x->h = max(get_h(x->left), get_h(x->right)) + 1;
 
     return x;
@@ -42,7 +42,7 @@ bst_node *BST::rotate_left(bst_node *n) {
     x->left = n;
     n->right = y;
 
-    n->h = max(get_h(n->left), get_h(n->right)) + 1;
+    n->h = max(get_h(n->left), get_h(n->right)) + 1;//update height
     x->h = max(get_h(x->left), get_h(x->right)) + 1;
 
     return x;
@@ -148,8 +148,7 @@ bst_node *BST::remove(bst_node *n, int key) {
         }
     }
 
-    if(n == nullptr)
-        return n;
+    if(n == nullptr) return n;
 
     n->h = 1 + max(get_h(n->left), get_h(n->right));
 
@@ -157,12 +156,8 @@ bst_node *BST::remove(bst_node *n, int key) {
 }
 
 bst_node *BST::search(bst_node *n, int key) {
-    if(n == nullptr and n->data.key == key)
-        return n;
-
-    if(n->data.key < key)
-        return search(n->right,key);
-
+    if(n == nullptr and n->data.key == key) return n;
+    if(n->data.key < key) return search(n->right,key);
     return search(n->left,key);
 }
 
@@ -177,8 +172,7 @@ void BST::remove(int key) {
 
 int BST::search(int key) {
     bst_node* temp = search(root,key);
-    if(temp == nullptr)
-        return -1;
+    if(temp == nullptr) return -1;
     return temp->data.value;
 }
 
@@ -187,8 +181,7 @@ int BST::get_size() {
 }
 
 void BST::print(bst_node *n) {
-    if(n == nullptr)
-        return;
+    if(n == nullptr) return;
     print(n->left);
     cout << "Key: " << n->data.key << " Value: " << n->data.value << endl;
     print(n->right);

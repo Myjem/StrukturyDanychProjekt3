@@ -9,9 +9,9 @@ private:
     couple**HashTable2;
     int size;
     int capacity;
-    int hash1(int key);
-    int hash2(int key);
-    void rehash();
+    int hash1(int key);//first hash function
+    int hash2(int key);//second hash function
+    void rehash();//rehash if we have max number of iterations without inserting
 public:
     HashTable_cuckoo(int c);
     void insert(int key,int value);

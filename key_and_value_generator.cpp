@@ -2,7 +2,6 @@
 #include<fstream>
 #include<cstdlib>
 #include<ctime>
-#include<cstdio>
 
 using namespace std;
 

@@ -3,7 +3,7 @@
 struct couple{
     int key;
     int value;
-    couple() : key(0), value(0) {}
+    couple() : key(0), value(0) {}//constructors
     couple(int k,int v):key(k),value(v){}
     couple(int c):key(c),value(c){}
 };
