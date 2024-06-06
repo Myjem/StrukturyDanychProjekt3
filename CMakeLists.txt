@@ -18,4 +18,6 @@ add_executable(StrukturyDanychProjekt3
         HashTable_cuckoo.cpp
         bst_node.h
         bst.h
-        bst.cpp)
+        bst.cpp
+        HashTable_2_choice.h
+        HashTable_coalesced.h)
