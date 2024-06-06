@@ -3,6 +3,7 @@
 #include "ui.h"
 #include "HashTable_chain_separate.h"
 #include "HashTable_cuckoo.h"
+#include "HashTable_2_choice.h"
 #include<fstream>
 #include<ctime>
 #include <cstdlib>
@@ -73,7 +74,18 @@ int main()
     end = std::chrono::high_resolution_clock::now();
     time = std::chrono::duration_cast<std::chrono::nanoseconds >(end - begin);
     cout<<"Czas usuniecia: "<<time.count()/q<<" ns"<<endl;*/
-    ui();
+    //ui();
+    HashTable_2_choice H(10);
+    H.insert(20,2137);
+    H.insert(10,2237);
+    H.print();
+    cout<<endl;
+    H.insert(10,10);
+    H.print();
+    H.remove(10);
+    cout<<endl;
+    H.print();
+
     return 0;
     
 }
