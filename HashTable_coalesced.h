@@ -9,7 +9,7 @@ class HashTable_coalesced:public Base{
     int capacity;
     int size;
     int hash(int key);
-    couple_coalesced** Hashtable;
+    couple_coalesced* Hashtable;
 public:
     HashTable_coalesced(int c);
     void insert(int key,int value);

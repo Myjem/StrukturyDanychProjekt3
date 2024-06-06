@@ -21,6 +21,6 @@ add_executable(StrukturyDanychProjekt3
         bst.cpp
         HashTable_2_choice.h
         HashTable_coalesced.h
-        HashTable_2_choice.cpp)
+        HashTable_2_choice.cpp
         couple_coalesced.h
         HashTable_coalesced.cpp)
