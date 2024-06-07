@@ -14,7 +14,7 @@
 #include "array_list.h"
 using namespace std;
 
-void load_data(HashTable_chain *hashTable, int amount_of_data)
+void load_data(HashTable_coalesced *hashTable, int amount_of_data)
 {
     fstream file;
     string k="";
@@ -49,12 +49,12 @@ void load_keys(ArrayList<int>&Keys,int amount_of_data)
 int main()
 {
 
-    /*int q = 50;
+    int q = 50;
     int amount_of_data = 40000;//quantity of data (5000,8000,10000,16000,20000,40000,60000,100000)
     ArrayList<int>Keys(amount_of_data);
-    HashTable_chain* hashTables[q];
+    HashTable_coalesced* hashTables[q];
      for (int i = 0; i < q; i++) {
-        hashTables[i] = new HashTable_chain(3*amount_of_data);
+        hashTables[i] = new HashTable_coalesced(3*amount_of_data);
         load_data(hashTables[i],amount_of_data);
     }
     cout << endl << "Wczytano" << endl << endl;
@@ -74,26 +74,8 @@ int main()
     }
     end = std::chrono::high_resolution_clock::now();
     time = std::chrono::duration_cast<std::chrono::nanoseconds >(end - begin);
-    cout<<"Czas usuniecia: "<<time.count()/q<<" ns"<<endl;*/
+    cout<<"Czas usuniecia: "<<time.count()/q<<" ns"<<endl;
     //ui();
-    HashTable_coalesced H(10);
-    H.insert(5,2137);
-    H.insert(1,68);
-    H.insert(11,69);
-    H.insert(15,19);
-    H.insert(15,696969);
-    H.insert(10,2237);
-    H.insert(25,720);
-    H.remove(5);
-    H.insert(5,10101);
-    H.insert(80,252525);
-    H.print();
-    //cout<<endl;
-    //H.insert(10,10);
-    //H.print();
-   // H.remove(10);
-    //cout<<endl;
-    //H.print();
 
     return 0;
     

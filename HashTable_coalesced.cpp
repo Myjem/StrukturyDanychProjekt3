@@ -3,7 +3,7 @@
 
 using namespace std;
 
-HashTable_coalesced::HashTable_coalesced(int c) : capacity(c), size(0) {
+HashTable_coalesced::HashTable_coalesced(int c) : capacity(c), size(0), cellar(0.86*capacity), cellar_size(0) {
     Hashtable = new couple_coalesced[capacity];
 }
 
@@ -13,7 +13,7 @@ HashTable_coalesced::~HashTable_coalesced() {
 
 void HashTable_coalesced::insert(int key, int value) {
     if(size == capacity) {
-        cout << "table is full";                //check if full
+        cout << "table is full" << endl;                //check if full
         return;
     }
     int index = hash(key);
@@ -35,11 +35,17 @@ void HashTable_coalesced::insert(int key, int value) {
                 temp = temp->next;              //holds one value previous of checker for adding element later
             }                      
         }
-        for(int i = capacity - 1; i >= 0; i--) {       //look for the first empty slot from the back of the hashtable (linear probing)
+        if (cellar_size == capacity-cellar) {               //check if strych is pełny
+            cout << "Cellar is full" << endl;
+            return;
+        }
+        for(int i = capacity - 1; i >= cellar; i--) {
+                   //look for the first empty slot from the back of the hashtable (linear probing)
             if(Hashtable[i].key == 0 && Hashtable[i].value == 0) {
                 Hashtable[i] = couple_coalesced(key, value, nullptr);
                 temp->next = &Hashtable[i];
                 size++;
+                cellar_size++;
                 return;
             }
         }
@@ -73,10 +79,12 @@ void HashTable_coalesced::remove(int key) {
         Hashtable[index].value = hold_next->value;              //second case if the first element contains next key
         Hashtable[index].next = hold_next->next;
         *hold_next = couple_coalesced();
+        cellar_size--;
     }
     else {
         prev->next = temp->next;
         *temp = couple_coalesced();
+        cellar_size--;
     }
     size--;
 }
@@ -92,5 +100,5 @@ int HashTable_coalesced::get_size() {
 }
 
 int HashTable_coalesced::hash(int key) {
-    return key % capacity;
+    return key % cellar;
 }

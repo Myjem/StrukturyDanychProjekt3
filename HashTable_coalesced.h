@@ -9,6 +9,8 @@ class HashTable_coalesced:public Base{
     int capacity;
     int size;
     int hash(int key);
+    int cellar;
+    int cellar_size;
     couple_coalesced* Hashtable;
 public:
     HashTable_coalesced(int c);
