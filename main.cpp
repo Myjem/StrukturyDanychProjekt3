@@ -4,6 +4,7 @@
 #include "HashTable_chain_separate.h"
 #include "HashTable_cuckoo.h"
 #include "HashTable_2_choice.h"
+#include "HashTable_coalesced.h"
 #include<fstream>
 #include<ctime>
 #include <cstdlib>
@@ -75,16 +76,24 @@ int main()
     time = std::chrono::duration_cast<std::chrono::nanoseconds >(end - begin);
     cout<<"Czas usuniecia: "<<time.count()/q<<" ns"<<endl;*/
     //ui();
-    HashTable_2_choice H(10);
-    H.insert(20,2137);
+    HashTable_coalesced H(10);
+    H.insert(5,2137);
+    H.insert(1,68);
+    H.insert(11,69);
+    H.insert(15,19);
+    H.insert(15,696969);
     H.insert(10,2237);
+    H.insert(25,720);
+    H.remove(5);
+    H.insert(5,10101);
+    H.insert(80,252525);
     H.print();
-    cout<<endl;
-    H.insert(10,10);
-    H.print();
-    H.remove(10);
-    cout<<endl;
-    H.print();
+    //cout<<endl;
+    //H.insert(10,10);
+    //H.print();
+   // H.remove(10);
+    //cout<<endl;
+    //H.print();
 
     return 0;
     
