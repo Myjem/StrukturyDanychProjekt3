@@ -64,8 +64,8 @@ void HashTable_2_choice::print() {
         if (HashTab[i].get_size() == 0) continue;
         for (int j = 0; j < HashTab[i].get_size(); j++) {
             couple t = HashTab[i].get(j);
-            cout << "key " << t.key << " ";
-            cout << "value " << t.value << endl;
+            cout << "key: " << t.key << " ";
+            cout << "value: " << t.value << endl;
         }
     }
 }
