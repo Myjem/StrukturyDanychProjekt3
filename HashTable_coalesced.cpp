@@ -38,17 +38,14 @@ void HashTable_coalesced::insert(int key, int value) {
         if (cellar_size == capacity-cellar) {               //check if strych is pełny
             cout << "Cellar is full" << endl;
             return;
-        }
-        for(int i = capacity - 1; i >= cellar; i--) {
-                   //look for the first empty slot from the back of the hashtable (linear probing)
-            if(Hashtable[i].key == 0 && Hashtable[i].value == 0) {
-                Hashtable[i] = couple_coalesced(key, value, nullptr);
-                temp->next = &Hashtable[i];
-                size++;
-                cellar_size++;
-                return;
-            }
-        }
+        }        
+            Hashtable[cellar + cellar_size].key = key;
+            Hashtable[cellar + cellar_size].value = value;
+            Hashtable[cellar + cellar_size].next = nullptr;            //fill the first empty cellar couple
+            temp->next = &Hashtable[cellar + cellar_size];              //point from the original index to newly made couple
+            size++;
+            cellar_size++;
+            return;
     }
 }
 
@@ -74,16 +71,24 @@ void HashTable_coalesced::remove(int key) {
             size--;
             return;   //first case if there is no depth
         }
+        Σ = &Hashtable[cellar_size + cellar - 1];     // point to the last node in cellar
         couple_coalesced* hold_next = temp->next;
         Hashtable[index].key = hold_next->key;
         Hashtable[index].value = hold_next->value;              //second case if the first element contains next key
         Hashtable[index].next = hold_next->next;
-        *hold_next = couple_coalesced();
+        hold_next->key = Σ->key;
+        hold_next->value = Σ->value;
+        hold_next->next = Σ->next;
+        *Σ = couple_coalesced();
         cellar_size--;
     }
     else {
+        Σ = &Hashtable[cellar_size + cellar - 1];
         prev->next = temp->next;
-        *temp = couple_coalesced();
+        temp->key = Σ->key;
+        temp->value= Σ->value;
+        temp->next = Σ->next;
+        *Σ = couple_coalesced();
         cellar_size--;
     }
     size--;

@@ -48,7 +48,7 @@ void load_keys(ArrayList<int>&Keys,int amount_of_data)
 
 int main()
 {
-
+    /*
     int q = 50;
     int amount_of_data = 40000;//quantity of data (5000,8000,10000,16000,20000,40000,60000,100000)
     ArrayList<int>Keys(amount_of_data);
@@ -78,5 +78,14 @@ int main()
     //ui();
 
     return 0;
-    
+    */
+   HashTable_coalesced H(10);
+   H.insert(1,11);
+   H.insert(9,22);
+   H.insert(17,33);
+   H.insert(25,444);
+   H.insert(17,6666);
+    H.remove(17);
+ 
+   H.print();
 }

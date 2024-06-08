@@ -12,6 +12,7 @@ class HashTable_coalesced:public Base{
     int cellar;
     int cellar_size;
     couple_coalesced* Hashtable;
+    couple_coalesced* Σ = nullptr;  //XDDDDD   points to the latest node in the cellar    uuuuuuu sigma
 public:
     HashTable_coalesced(int c);
     void insert(int key,int value);
