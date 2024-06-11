@@ -8,7 +8,7 @@ class HashTable_chain:public Base{
 private:
     ArrayList<BST>* HashTab;//array of bst(AVL) trees
     int capacity;//quantity of index (m)
-    int size;//qua tity of elements
+    int size;//quantity of elements
     int hash(int key);//hash function x mod m
 public:
     HashTable_chain(int c);

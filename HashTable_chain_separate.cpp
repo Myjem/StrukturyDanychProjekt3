@@ -19,11 +19,6 @@ int HashTable_chain::hash(int key) {
 }
 
 void HashTable_chain::insert(int key, int value) {
-    if(size == capacity)
-    {
-        cout<<"Slownik pelny!"<<endl;
-        return;
-    }
     if(key<0)
     {
         cout<<"Klucz musi byc wiekszy od zero"<<endl;
